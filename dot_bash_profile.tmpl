@@ -1,0 +1,34 @@
+# Exports
+export CLICOLOR=
+export EDITOR="/usr/local/bin/code --wait"
+export KUBECONFIG=~/.kube/config:~/.kube/b.pre:~/.kube/b.pro:~/.kube/dev.pachy:~/.kube/pachy
+export PATH=$HOME/Library/Python/2.7/bin:$PATH
+export PATH=$HOME/Library/Python/3.7/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
+#export PS1="\h:\W \u\$ "
+export PS1="\u@\h:\w\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\$ "
+
+export DB_DEV="{{ .database.dev }}"
+export DB_PRE="{{ .database.pre }}"
+export DB_PRO="{{ .database.pro }}"
+
+# BASH completion
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+# BASH history
+HISTCONTROL=erasedups:ignoredups # Don't load duplicates and erase them on save
+HISTFILESIZE=5000 # Number of lines. No value for unlimited.
+HISTSIZE= # Number of commands. No value for unlimited.
+# HISTTIMEFORMAT='%F %T ' # Add timestamps
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND" # Save after every command
+
+# Powerline
+# powerline-daemon -q
+# POWERLINE_BASH_CONTINUATION=1
+# POWERLINE_BASH_SELECT=1
+# . /Users/cameronboulton/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
+
+# Shell options
+shopt -s cmdhist # bash attemps to save all lines of a multiple-line command in the same history entry
+shopt -s histappend # The history list is appended, rather than overwriting
+shopt -s lithist # If cmdhist option is enabled, multi-line commands are saved to the history with embedded newlines rather than using semicolon
