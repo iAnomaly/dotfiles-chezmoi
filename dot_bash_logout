@@ -1,1 +1,0 @@
-[ $(command -v tac) ] && tac $HISTFILE | awk '!x[$0]++' | tac > $HISTFILE.awk && mv $HISTFILE.awk $HISTFILE
