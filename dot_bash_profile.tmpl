@@ -22,6 +22,10 @@ export GITLAB_TOKEN="{{ .gitlab.token }}"
 export GITLAB_USERNAME="{{ .gitlab.username }}"
 {{ end -}}
 
+{{ if (index . "npm") -}}
+export NPM_TOKEN="{{ .npm.token }}"
+{{ end -}}
+
 # Bash
 [ -f $BREW_PREFIX/etc/bash_completion ] && . $BREW_PREFIX/etc/bash_completion
 shopt -s histappend # On each save the history list is appended, rather than overwritten.
