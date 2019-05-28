@@ -3,6 +3,7 @@ BREW_PREFIX=$(brew --prefix)
 # Exports
 export CLICOLOR=
 export EDITOR="$BREW_PREFIX/bin/code --wait"
+export GPG_TTY=$(tty)
 export KUBECONFIG=~/.kube/config
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:~/go/bin
