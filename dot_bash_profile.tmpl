@@ -27,7 +27,7 @@ export NPM_TOKEN="{{ .npm.token }}"
 shopt -s histappend # On each save the history list is appended, rather than overwritten.
 # shopt -s lithist # If cmdhist option is enabled, multi-line commands are saved to the history with embedded newlines rather than using semicolons.
 HISTCONTROL=erasedups:ignoredups # Erase contiguous duplicates from session. : Don't save contiguous duplicates.
-HISTFILESIZE=100000 # Maximum number of lines in history file before truncation. No value for unlimited. Enforced at shell start AND exit.
+HISTFILESIZE= # Maximum number of lines in history file before truncation. No value for unlimited. Enforced at shell start AND exit.
 # HISTIGNORE= #
 HISTSIZE= # Maximum number of lines in current session to save. No value for unlimited.
 HISTTIMEFORMAT='%F %T ' # Add timestamps
