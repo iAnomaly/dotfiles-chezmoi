@@ -81,7 +81,6 @@ source $ZSH/oh-my-zsh.sh
 BREW_PREFIX="$(brew --prefix)"
 
 export EDITOR="$BREW_PREFIX/bin/code --wait"
-export GPG_TTY="$(tty)"
 export KUBECONFIG="$HOME/.kube/config"
 
 export GITLAB_PASSWORD="{{ .gitlab.password }}"
