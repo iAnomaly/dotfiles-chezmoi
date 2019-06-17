@@ -1,8 +1,10 @@
+[pager]
+	branch = false
 {{ if (index . "git") -}}
+[commit]
+	{{ if .git.signingkey }}gpgsign = true{{ end }}
 [user]
 	name = {{ .git.name }}
 	email = {{ .git.email }}
 	{{ if .git.signingkey }}signingkey = {{ .git.signingkey }}{{ end }}
-[commit]
-	{{ if .git.signingkey }}gpgsign = true{{ end }}
 {{ end -}}
