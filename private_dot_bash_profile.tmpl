@@ -7,7 +7,6 @@ PATH="$PATH:$HOME/Library/Python/3.7/bin"
 
 export CLICOLOR=
 export EDITOR="$BREW_PREFIX/bin/code --wait"
-export GPG_TTY="$(tty)"
 export KUBECONFIG="$HOME/.kube/config"
 # export PS1="\h:\W \u\$ "
 export PS1="\u@\h:\w\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\$ "
