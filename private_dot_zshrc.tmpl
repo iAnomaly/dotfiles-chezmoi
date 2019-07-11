@@ -83,9 +83,7 @@ BREW_PREFIX="$(brew --prefix)"
 export EDITOR="$BREW_PREFIX/bin/code --wait"
 export KUBECONFIG="$HOME/.kube/config"
 
-export GITLAB_PASSWORD="{{ .gitlab.password }}"
 export GITLAB_TOKEN="{{ .gitlab.token }}"
-export GITLAB_USERNAME="{{ .gitlab.username }}"
 export NPM_TOKEN="{{ .npm.token }}"
 
 # You may need to manually set your language environment

@@ -13,9 +13,7 @@ export KUBECONFIG="$HOME/.kube/config"
 export PS1="\u@\h:\w\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\$ "
 
 {{ if (index . "gitlab") -}}
-export GITLAB_PASSWORD="{{ .gitlab.password }}"
 export GITLAB_TOKEN="{{ .gitlab.token }}"
-export GITLAB_USERNAME="{{ .gitlab.username }}"
 {{ end -}}
 
 {{ if (index . "npm") -}}
