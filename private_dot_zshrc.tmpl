@@ -1,8 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-PATH="$PATH:/usr/local/sbin"
-PATH="$PATH:$HOME/go/bin"
-PATH="$PATH:$HOME/Library/Python/3.7/bin"
+export GEM_HOME=$HOME/.gem
+PATH=$GEM_HOME/bin:$PATH
+PATH=$PATH:/usr/local/sbin
+PATH=$PATH:$HOME/go/bin
+PATH=$PATH:$HOME/Library/Python/3.7/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="{{ .chezmoi.homedir }}/.oh-my-zsh"
