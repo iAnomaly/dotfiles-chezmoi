@@ -16,7 +16,6 @@ export GITLAB_PASSWORD="{{ .gitlab.password }}"
 export GITLAB_TOKEN="{{ .gitlab.token }}"
 export GITLAB_USERNAME="{{ .gitlab.username }}"
 {{ end -}}
-
 {{ if (index . "npm") -}}
 export NPM_TOKEN="{{ .npm.token }}"
 {{ end -}}

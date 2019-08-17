@@ -5,7 +5,7 @@ PATH="$PATH:$HOME/go/bin"
 PATH="$PATH:$HOME/Library/Python/3.7/bin"
 
 # Path to your oh-my-zsh installation.
-export ZSH="{{ .chezmoi.homedir }}/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -83,10 +83,14 @@ BREW_PREFIX="$(brew --prefix)"
 export EDITOR="$BREW_PREFIX/bin/code --wait"
 export KUBECONFIG="$HOME/.kube/config"
 
+{{- if (index . "gitlab") }}
 export GITLAB_PASSWORD="{{ .gitlab.password }}"
 export GITLAB_TOKEN="{{ .gitlab.token }}"
 export GITLAB_USERNAME="{{ .gitlab.username }}"
+{{- end }}
+{{- if (index . "npm") }}
 export NPM_TOKEN="{{ .npm.token }}"
+{{- end }}
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
