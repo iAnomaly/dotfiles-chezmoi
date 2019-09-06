@@ -89,9 +89,7 @@ setopt HIST_REDUCE_BLANKS
 BREW_PREFIX="$(brew --prefix)"
 export EDITOR="$BREW_PREFIX/bin/code --wait"
 {{- if (index . "gitlab") }}
-export GITLAB_PASSWORD="{{ .gitlab.password }}"
 export GITLAB_TOKEN="{{ .gitlab.token }}"
-export GITLAB_USERNAME="{{ .gitlab.username }}"
 {{- end }}
 export KUBECONFIG="$HOME/.kube/config"
 {{- if (index . "npm") }}
