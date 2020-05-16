@@ -88,10 +88,10 @@ BREW_PREFIX="$(brew --prefix)"
 export EDITOR="$BREW_PREFIX/bin/code --wait"
 export FZF_ALT_C_COMMAND="fd --type d 2>/dev/null"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
-export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:wrap"
+export FZF_CTRL_R_OPTS="--preview '(echo {} | highlight -S sh -O xterm256 --failsafe) || echo {}' --preview-window down:5:wrap"
 export FZF_CTRL_T_COMMAND="fd 2>/dev/null"
-export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2>/dev/null || cat {} || tree -C {}) 2>/dev/null | head -200'"
-# export FZF_DEFAULT_OPTS='--no-height'
+export FZF_CTRL_T_OPTS="--preview '(highlight -O xterm256 -l {} 2>/dev/null || cat {} || tree -C {}) 2>/dev/null | head -200'"
+export FZF_DEFAULT_OPTS='--no-height'
 {{- if (index . "github") }}
 export GITHUB_TOKEN="{{ .github.token }}"
 {{- end }}
