@@ -1,5 +1,7 @@
 [pager]
 	branch = false
+[remote "origin"]
+	prune = true
 {{ if (index . "git") -}}
 [commit]
 	{{ if (index .git "signingkey") }}gpgsign = true{{ end }}
