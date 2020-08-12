@@ -27,7 +27,7 @@
         "vs-kubernetes.kubectl-path": "/usr/local/bin/kubectl",
     },
     "window.zoomLevel": 1,
-    "workbench.colorTheme": "Monokai Dimmed",
+    "workbench.colorTheme": "Monokai",
     "yaml.customTags": [
         "!stack_output",
         "!And",
