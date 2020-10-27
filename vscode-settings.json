@@ -2,6 +2,7 @@
     "[jinja yaml]": {},
     "breadcrumbs.enabled": true,
     "diffEditor.ignoreTrimWhitespace": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "all",
     "editor.rulers": [80,120],
@@ -9,13 +10,11 @@
     "files.associations": {
         "*.yaml": "yaml"
     },
-    "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "git.autofetch": true,
     "git.confirmSync": false,
     "go.formatTool": "goimports",
-    "kafka.hosts": "localhost:31090,localhost:31091,localhost:31092",
     "linkerd-path": "/usr/local/bin/linkerd",
     "problems.showCurrentInStatus": true,
     "terminal.integrated.enableBell": true,
@@ -27,7 +26,6 @@
         "vs-kubernetes.kubectl-path": "/usr/local/bin/kubectl",
     },
     "window.zoomLevel": 1,
-    "workbench.colorTheme": "Quiet Light",
     "yaml.customTags": [
         "!stack_output",
         "!And",
@@ -58,6 +56,5 @@
         "!Split",
         "!Split sequence"
     ],
-    "yaml.schemaStore.enable": true,
-    "yaml.validate": false
+    "yaml.schemaStore.enable": true
 }
