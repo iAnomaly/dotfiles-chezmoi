@@ -15,10 +15,15 @@
     "git.autofetch": true,
     "git.confirmSync": false,
     "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
     "linkerd-path": "/usr/local/bin/linkerd",
     "problems.showCurrentInStatus": true,
+    "terminal.integrated.allowChords": false,
+    "terminal.integrated.drawBoldTextInBrightColors": false,
     "terminal.integrated.enableBell": true,
+    "terminal.integrated.experimentalLinkProvider": false,
     "terminal.integrated.macOptionIsMeta": true,
+    // "terminal.integrated.rendererType": "experimentalWebgl",
     "terminal.integrated.shell.linux": "/bin/zsh",
     "terminal.integrated.shell.osx": "/bin/zsh",
     "vs-kubernetes": {
@@ -56,5 +61,6 @@
         "!Split",
         "!Split sequence"
     ],
-    "yaml.schemaStore.enable": true
+    "yaml.schemaStore.enable": true,
+    "workbench.colorTheme": "Default Light+"
 }
