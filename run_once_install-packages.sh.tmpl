@@ -3,6 +3,7 @@
 # Enable TouchID for PAM
 grep -q 'pam_tid\.so' /etc/pam.d/sudo || sudo sed -Ei '.bak' $'2i\\\nauth       sufficient     pam_tid\.so\n' /etc/pam.d/sudo
 
+# SSH key
 if ! [ -f ~/.ssh/id_ed25519 -o -f ~/.ssh/id_rsa ]
 then
   printf 'Default SSH key not detected; creating now...\n' \
@@ -11,48 +12,54 @@ then
   && printf 'Public SSH key copied to clipboard.\n'
 fi
 
-# Install Oh-My-Zsh
+# Fonts
+wget --timestamping --directory-prefix=/Library/Fonts \
+  https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf \
+  https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf \
+  https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf \
+  https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+
+# Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# Homebrew
 if ! command -v brew &>/dev/null
 then
-  # Install Homebrew
   export CI=
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-# Uninstall legacy
-for keg in helmfile jj kubernetes-helm mysql node postgresql node@10
+# Brew uninstall legacy
+for keg in helm@2 jj kubernetes-helm mysql node postgresql node@10
 do
   brew uninstall --ignore-dependencies $keg 2>/dev/null
 done
 brew untap 2>/dev/null
 
-# Install Homebrew taps
+# Brew install taps
 for tap in aws/tap/aws-sam-cli windmilleng/tap/tilt
 do
   brew install $tap
 done
 
-# Install Homebrew formulae
-brew install asciinema awscli cmatrix coreutils docker-credential-helper-ecr eksctl fd fzf gawk git gnu-sed go gpg helm@2 highlight jq kubectx kubernetes-cli linkerd make mysql@5.7 node@12 postgresql@11 python redis ripgrep stern tmux tree watch wget yq
-brew link --overwrite --force helm@2 kubernetes-cli mysql@5.7 node@12 postgresql@11
+# Brew install formulae
+brew install asciinema awscli cmatrix coreutils docker-credential-helper-ecr eksctl fd fzf gawk git gnu-sed go gpg helm highlight jq kubectx kubernetes-cli linkerd make mysql@5.7 node@12 postgresql@11 python redis ripgrep stern tmux tree watch wget yq
+brew link --overwrite --force kubernetes-cli mysql@5.7 node@12 postgresql@11
 
-# Install Homebrew casks
+# Brew install casks
 for cask in docker keybase spectacle visual-studio-code
 do
-  brew cask install $cask
+  brew install $cask
 done
 
 # Install Helm dependencies
 [ -d ~/.helm/ ] || helm init --client-only
-helm plugin list | grep -q 'diff[[:blank:]]*3.1.1' || (helm plugin remove diff 2>/dev/null; helm plugin install https://github.com/databus23/helm-diff --version v3.1.3)
-helm plugin list | grep -q 'helm-git[[:blank:]]*0.8.1' || (helm plugin remove helm-git 2>/dev/null; helm plugin install https://github.com/aslafy-z/helm-git --version v0.8.1)
+helm plugin list | grep -q 'diff[[:blank:]]*3.1.3' || (helm plugin remove diff 2>/dev/null; helm plugin install https://github.com/databus23/helm-diff --version v3.1.3)
+helm plugin list | grep -q 'helm-git[[:blank:]]*0.10.0' || (helm plugin remove helm-git 2>/dev/null; helm plugin install https://github.com/aslafy-z/helm-git --version v0.10.0)
+helm plugin list | grep -q 's3[[:blank:]]*0.10.0' || (helm plugin remove s3 2>/dev/null; helm plugin install https://github.com/hypnoglow/helm-s3.git --version 0.10.0)
 helm plugin list | grep -q 'secrets[[:blank:]]*2.0.2' || (helm plugin remove secrets 2>/dev/null; helm plugin install https://github.com/zendesk/helm-secrets --version v2.0.2)
-helm plugin list | grep -q 'tiller[[:blank:]]*0.9.1' || (helm plugin remove tiller 2>/dev/null; helm plugin install https://github.com/rimusz/helm-tiller --version v0.9.1)
 
 # Install binaries
-[ "$(helmfile --version 2>/dev/null)" = 'helmfile version v0.131.0' ] || curl --location --output /usr/local/bin/helmfile https://github.com/roboll/helmfile/releases/download/v0.131.0/helmfile_darwin_amd64 && chmod +x /usr/local/bin/helmfile
 curl --location --output /tmp/sessionmanager-bundle.zip --time-cond /tmp/sessionmanager-bundle.zip https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip && unzip -o /tmp/sessionmanager-bundle.zip -d /tmp/ > /dev/null && sudo /tmp/sessionmanager-bundle/install -b /usr/local/bin/session-manager-plugin > /dev/null
 
 # Open Docker Desktop and overwrite settings
