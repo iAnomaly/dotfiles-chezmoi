@@ -6,11 +6,11 @@
 	rebase = false
 [remote "origin"]
 	prune = true
-{{ if (index . "git") -}}
+{{ with .values.git -}}
 [commit]
-	{{ if (index .git "signingkey") }}gpgsign = true{{ end }}
+	{{ if (index . "signingkey") }}gpgsign = true{{ end }}
 [user]
-	name = {{ .git.name }}
-	email = {{ .git.email }}
-	{{ if (index .git "signingkey") }}signingkey = {{ .git.signingkey }}{{ end }}
+	name = {{ .name }}
+	email = {{ .email }}
+	{{ if (index . "signingkey") }}signingkey = {{ .signingkey }}{{ end }}
 {{ end -}}

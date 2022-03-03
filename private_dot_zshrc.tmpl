@@ -105,15 +105,10 @@ export FZF_CTRL_R_OPTS="--preview '(echo {} | highlight -S sh -O xterm256 --fail
 export FZF_CTRL_T_COMMAND="fd 2>/dev/null"
 export FZF_CTRL_T_OPTS="--preview '(highlight -O xterm256 -l {} 2>/dev/null || cat {} || tree -C {}) 2>/dev/null | head -200'"
 export FZF_DEFAULT_OPTS='--no-height'
-{{- if (index . "github") }}
-export GITHUB_TOKEN="{{ .github.token }}"
-{{- end }}
-{{- if (index . "gitlab") }}
-export GITLAB_TOKEN="{{ .gitlab.token }}"
-{{- end }}
 export KUBECONFIG="$HOME/.kube/config"
-{{- if (index . "npm") }}
-export NPM_TOKEN="{{ .npm.token }}"
+
+{{- with .values.env }}
+{{ . }}
 {{- end }}
 
 # You may need to manually set your language environment
