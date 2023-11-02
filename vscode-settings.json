@@ -1,15 +1,17 @@
 {
-    "[jinja yaml]": {},
     "breadcrumbs.enabled": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.bracketPairColorization.enabled": true,
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "all",
-    "editor.rulers": [80,120],
-    "editor.suggestSelection": "first",
+    "editor.rulers": [
+        80,
+        120
+    ],
     "editor.tabSize": 2,
     "files.associations": {
-        "*.yaml": "yaml"
+        "*.yaml": "yaml",
+        "*.hcl": "terraform"
     },
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
@@ -21,16 +23,26 @@
     "linkerd-path": "/usr/local/bin/linkerd",
     "problems.showCurrentInStatus": true,
     "redhat.telemetry.enabled": false,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.defaultProfile.linux": "zsh",
     "terminal.integrated.enableBell": true,
     "terminal.integrated.fontFamily": "MesloLGS NF",
-    "terminal.integrated.shell.linux": "/bin/zsh",
-    "terminal.integrated.shell.osx": "/bin/zsh",
-    "vs-kubernetes": {
-        "vs-kubernetes.helm-path": "/usr/local/bin/helm",
-        "vs-kubernetes.kubectl-path": "/usr/local/bin/kubectl",
+    "workbench.colorTheme": "Default Light+",
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": false,
+        "markdown": false
     },
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "window.zoomLevel": 1,
+    "vs-kubernetes": {
+        "vs-kubernetes.crd-code-completion": "disabled"
+    },
+    "window.zoomLevel": 0,
+    "workbench.editorAssociations": {
+        "git-rebase-todo": "default"
+    },
     "yaml.customTags": [
         "!stack_output",
         "!And",
@@ -61,6 +73,5 @@
         "!Split",
         "!Split sequence"
     ],
-    "yaml.schemaStore.enable": true,
-    "workbench.colorTheme": "Default Light+"
+    "githubPullRequests.pullBranch": "never",
 }

@@ -7,10 +7,12 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-path+="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin"
-path+=~/.krew/bin
-path+=~/go/bin
-path+="$(python3 -m site --user-base)/bin"
+eval $(/opt/homebrew/bin/brew shellenv)
+PATH=$PATH:~/go/bin
+PATH=$PATH:~/.krew/bin
+PATH=$PATH:"$(python3 -m site --user-base)/bin"
+PATH=$PATH:"$(ruby -r rubygems -e 'puts Gem.user_dir')/bin"
+export PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -92,9 +94,7 @@ plugins=(fzf git-extras z)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_REDUCE_BLANKS
-setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS HIST_REDUCE_BLANKS HIST_SAVE_NO_DUPS
 
 # export MANPATH="/usr/local/man:$MANPATH"
 BREW_PREFIX="$(brew --prefix)"
@@ -106,8 +106,10 @@ export FZF_CTRL_T_COMMAND="fd 2>/dev/null"
 export FZF_CTRL_T_OPTS="--preview '(highlight -O xterm256 -l {} 2>/dev/null || cat {} || tree -C {}) 2>/dev/null | head -200'"
 export FZF_DEFAULT_OPTS='--no-height'
 export KUBECONFIG="$HOME/.kube/config"
+export SAVEHIST=50000
+export HISTSIZE=$SAVEHIST
 
-{{- with .values.env }}
+{{ with .values.env -}}
 {{ . }}
 {{- end }}
 
