@@ -26,15 +26,15 @@
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.defaultProfile.osx": "zsh",
     "terminal.integrated.defaultProfile.linux": "zsh",
-    "terminal.integrated.enableBell": true,
     "terminal.integrated.fontFamily": "MesloLGS NF",
-    "workbench.colorTheme": "Default Light+",
+    "workbench.colorTheme": "Visual Studio Light",
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
         "*": true,
-        "yaml": true,
         "plaintext": false,
-        "markdown": false
+        "markdown": true,
+        "scminput": false,
+        "yaml": true
     },
     "vs-kubernetes": {
         "vs-kubernetes.crd-code-completion": "disabled"
@@ -74,4 +74,9 @@
         "!Split sequence"
     ],
     "githubPullRequests.pullBranch": "never",
+    "accessibility.signals.terminalBell": {
+        "sound": "on"
+    },
+    "terminal.integrated.enableVisualBell": true,
+    "github.copilot.editor.enableAutoCompletions": true,
 }
